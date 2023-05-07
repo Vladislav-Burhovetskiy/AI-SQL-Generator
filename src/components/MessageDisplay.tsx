@@ -1,7 +1,9 @@
 const MessageDisplay = () => {
   return (
     <div className="message-display">
-      <h1></h1>
+      <p id={"icon"}>X</p>
+      <p>user</p>
+      <p>message</p>
     </div>
   );
 };
