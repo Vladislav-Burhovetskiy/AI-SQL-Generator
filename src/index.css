@@ -30,7 +30,7 @@ input {
 }
 
 .code-display {
-  position: relative;
+  /* position: relative; */
   width: 96%;
   margin: 2%;
   height: 46%;
@@ -48,8 +48,8 @@ input {
 }
 
 .buttons {
-  position: fixed;
-  width: 40.5%;
+  /* position: fixed; */
+  width: 100%;
   height: 35px;
   background-color: rgb(50, 50, 50);
   display: flex;
@@ -104,6 +104,12 @@ input {
   box-sizing: border-box;
   background-color: rgb(250, 250, 250);
   margin: 5px 0;
+}
+
+@media (max-width: 600px) {
+  .app {
+    width: 45vh;
+  }
 }
 
 p#icon {
