@@ -54,7 +54,7 @@ const App = () => {
     <div className="app">
       <MessagesDisplay userMessages={userMessagesFiltered} />
       <input value={value} onChange={(e) => setValue(e.target.value)} />
-      <CodeDisplay text={latestChatCode?.content || ""} />
+      <CodeDisplay text={latestChatCode?.content || "heare will be answer from AI"} />
       <div className="button-container">
         <button id="get-query" onClick={getQuery}>
           Get Quary!
