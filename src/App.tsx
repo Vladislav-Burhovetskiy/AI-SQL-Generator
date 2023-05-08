@@ -13,37 +13,50 @@ const App = () => {
 
   const getQuery = async () => {
     try {
-      const options = {
+      const options: RequestInit = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: value }),
       };
 
-      console.log("New value input", value);
-
-      const response = await fetch(
-        "http://127.0.0.1:8000/completions",
-        options
-      );
-
-      const data = await response.json();
-      console.log(data);
-      setChat((oldChat) => [...oldChat, data]);
+      const data: ChatData = await (
+        await fetch("http://127.0.0.1:8000/completions", options)
+      ).json();
+      // const data = await response.json();
+      const userMessage = {
+        role: "user",
+        content: value,
+      };
+      setChat((oldChat) => [...oldChat, data, userMessage]);
     } catch (error) {
-      console.error({ error: "Server error" });
+      console.log(error);
     }
   };
+  const clearChat = () => {
+    setChat([]);
+    setValue("");
+  };
 
+  const userMessagesFiltered = chat.filter(
+    (message) => message.role === "user"
+  );
+  const latestChatCode = chat
+    .filter((message) => message.role === "assistant")
+    .pop();
+  
+  const errorFixMessage = `If "Get Quary" button don't work: You must use your own API openai KEY! Please follow the link: "https://platform.openai.com/account/api-keys" and create new secret key, than fix the code in index.ts or add new file .env in the root of your project and put inside new key as a variable API_KEY, but without "";`
   return (
     <div className="app">
-      <MessagesDisplay />
+      <MessagesDisplay userMessages={userMessagesFiltered} />
       <input value={value} onChange={(e) => setValue(e.target.value)} />
-      <CodeDisplay />
+      <CodeDisplay text={latestChatCode?.content ? latestChatCode.content : errorFixMessage} />
       <div className="button-container">
         <button id="get-query" onClick={getQuery}>
           Get Quary!
         </button>
-        <button id="clear-chat">Clear Chat</button>
+        <button id="clear-chat" onClick={clearChat}>
+          Clear Chat
+        </button>
       </div>
     </div>
   );
