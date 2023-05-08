@@ -1,6 +1,6 @@
 # AI-SQL-Generator
 React | TS | Node JS | Vite
-- [DEMOLINK] (https://vladislav-burhovetskiy.github.io/ai-sql-generator/)
+- [DEMOLINK](https://vladislav-burhovetskiy.github.io/ai-sql-generator/)
 
 This is SQL generator, working with openAI
 If you want to use it? follow next step:
