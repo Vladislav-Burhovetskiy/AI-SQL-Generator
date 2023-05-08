@@ -43,13 +43,12 @@ const App = () => {
   const latestChatCode = chat
     .filter((message) => message.role === "assistant")
     .pop();
-  
-  const errorFixMessage = `If "Get Quary" button don't work: You must use your own API openai KEY! Please follow the link: "https://platform.openai.com/account/api-keys" and create new secret key, than fix the code in index.ts or add new file .env in the root of your project and put inside new key as a variable API_KEY, but without "";`
+
   return (
     <div className="app">
       <MessagesDisplay userMessages={userMessagesFiltered} />
       <input value={value} onChange={(e) => setValue(e.target.value)} />
-      <CodeDisplay text={latestChatCode?.content ? latestChatCode.content : errorFixMessage} />
+      <CodeDisplay text={latestChatCode?.content || ""} />
       <div className="button-container">
         <button id="get-query" onClick={getQuery}>
           Get Quary!

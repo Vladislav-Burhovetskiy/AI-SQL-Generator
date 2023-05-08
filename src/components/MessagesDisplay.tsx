@@ -9,7 +9,7 @@ interface MessagesDisplayProps {
   UserMessages: UserMessage[];
 }
 
-const MessagesDisplay = ({ userMessages }: MessagesDisplayProps) => {
+const MessagesDisplay = ({ userMessages } : MessagesDisplayProps ) => {
   return (
     <div className="messages-display">
       {userMessages.map((userMessage, _index) => (
