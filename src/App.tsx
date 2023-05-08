@@ -29,7 +29,13 @@ const App = () => {
       };
       setChat((oldChat) => [...oldChat, data, userMessage]);
     } catch (error) {
-      console.log(error);
+      alert(`${error}: 
+      Attention: You have to fix API_KEY (use your own API openai KEY)!
+      1. Please follow the link: "https://platform.openai.com/account/api-keys"
+      2. login in and create new secret key,
+      3. fix the code in index.ts,
+      4. or add new file .env in the root of your project and put inside new key as a variable API_KEY, but without "";
+      You can read more in README file!`);
     }
   };
   const clearChat = () => {
