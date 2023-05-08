@@ -26,7 +26,6 @@ const App = () => {
         options
       );
 
-
       const data = await response.json();
       console.log(data);
       setChat((oldChat) => [...oldChat, data]);
